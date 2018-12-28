@@ -1,0 +1,32 @@
+{% extends "people/people_base.html" %}
+
+{% block people_content %}
+
+<div class="am-g">
+  <div class="am-u-sm-11 am-u-sm-centered">
+    <ul data-am-widget="gallery" class="am-gallery am-avg-sm-2 am-gallery-imgbordered" data-am-gallery="{ pureview: false }" >
+      {% for p_item in p_items %}
+      {% for photo in p_item %}
+      <li>
+        <div class="am-gallery-item">
+          <a href="/photos/{{photo.owner.id}}/{{photo.id}}/">
+            <img src="{{QINIU_IMG_URL}}{{photo.thumb_loc}}"  alt="{{ photo.caption }}"/>
+            <h3 class="am-gallery-title">{{ photo.title }}</h3>
+          </a>
+          {% for tag in photo.tag_list %}
+          <span><a class="am-badge" href="/search/?q={{tag.name}}">{{tag.name}}</a></span>
+          {% endfor %}
+          <div>
+            <span class="am-gallery-desc">上传于{{photo.date_posted|date:"Y-m-j"}}</span>
+            <span class="am-gallery-desc">喜欢{{photo.like_count}} 评论{{ photo.comment_count }}</span>
+          </div>
+        </div>
+      </li>
+      {% endfor %}
+      {% endfor %}
+    </ul>
+    <hr/>
+  </div>
+</div>
+
+{% endblock %}

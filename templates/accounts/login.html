@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Pixare - 分享精彩生活{% endblock %}
+{% block content %}
+<head lang="en">
+  <meta charset="UTF-8">
+  <style>
+    .header h1{text-align: center; font-size: 200%; color: #333; margin-top: 30px; }
+    .header p{text-align: center; font-size: 14px;}
+  </style>
+</head>
+
+<body>
+<div class="header">
+  <div class="am-g">
+    <h1>Pixare</h1>
+    <p>分享你的精彩生活</p>
+  </div>
+  <hr />
+</div>
+
+<div class="am-g">
+  <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+    <h3>登录</h3>
+    <hr>
+    {% if message %}{{ message }}<hr>{% endif %}
+    <form method="post" class="am-form" action="/accounts/login/"> {% csrf_token %}
+      {% for field in form %}
+      <div class="fieldWrapper">
+        {{ field.errors }}
+        {{ field.label_tag }}
+        {{ field }}
+        {% if field.help_text %}
+        <p class="help">{{ field.help_text|safe }}</p>
+        {% endif %}
+        <br>
+      </div>
+      {% endfor %}
+
+      <br />
+      <div class="am-cf">
+          <input type="submit" value="登录"class="am-btn am-btn-primary am-btn-block">
+      </div>
+
+    </form>
+    <hr>
+  </div>
+</div>
+</body>
+
+{% endblock %}

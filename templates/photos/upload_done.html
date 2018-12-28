@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}上传成功{% endblock %}
+
+
+
+{% block content %}
+
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <style>
+    .am-g h1{font-size: 200%; color: #333; margin-top: 30px; }
+    .am-g p{text-align: center; font-size: 14px;}
+  </style>
+</head>
+
+<body>
+  <div class="am-g">
+    <div class="am-u-md-8 am-u-sm-centered">
+
+      <h1>完成：照片已上传 :)</h1>
+
+      <span class="am-btn am-btn-link">
+        <a href="/upload/">还有照片要上传</a>
+      </span>
+
+      <hr>
+    </div>
+  </div>
+</body>
+
+{% endblock %}

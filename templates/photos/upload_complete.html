@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}完善照片信息{% endblock %}
+
+
+{% block content %}
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <style>
+    .am-g h1{font-size: 200%; color: #333; margin-top: 30px; }
+    .am-g p{text-align: center; font-size: 14px;}
+  </style>
+</head>
+
+<body>
+  <div class="am-g">
+    <div class="am-u-md-8 am-u-sm-centered">
+
+      <h1>第二步：完善照片信息</h1>
+      <form name="complete_form" class="am-form" method="post" action="">{% csrf_token %}
+        {% for photo in photo_list %}
+        <div class="am-u-md-4">
+          <div class="photo-edit">
+            <img src="{{QINIU_IMG_URL}}{{ photo.thumb_loc }}" alt="" />
+          </div>
+        </div>
+
+        <div class="am-u-md-8">
+          <div class="edit-margin">
+            <label>标题</label>
+            <input id="title" name={{photo.input_title_name}} type="text" placeholder="给照片取个名字吧" class="basic-input edit-input" maxlength="60" value="">
+          </div>
+
+          <div class="edit-margin">
+            <label>描述</label>
+            <textarea name={{photo.input_caption_name}} rows="4" class="basic-input edit-input" placeholder="描述一下照片背后的故事吧"></textarea>
+          </div>
+
+          <div class="edit-margin">
+            <label>标签</label>
+            <input id="tags" name={{photo.input_tags_name}} type="text" placeholder="给照片加个标签吧，用逗号隔开" class="basic-input edit-input" maxlength="60" value="">
+          </div>
+          <br>
+          <input type="submit" value="保存信息" id="button" class="am-btn am-btn-default" tabindex="3" title="保存照片信息">
+          <hr>
+        </div>
+        {% endfor %}
+
+
+      </form>
+
+    </div>
+  </div>
+</body>
+
+
+{% endblock %}

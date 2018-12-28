@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}{{ user.username }}的账号{% endblock %}
+
+{% block content %}
+<head lang="en">
+  <meta charset="UTF-8">
+  <style>
+    .am-g h2{font-size: 200%; color: #333; margin-top: 30px; }
+  </style>
+</head>
+
+<div class="am-g">
+  <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+
+    <h2>账户信息</h2>
+    <hr>
+    <ul>
+      <li>用户名: {{ user.username }} </li>
+      <li>Email: {{ user.email }} </li>
+    </ul>
+
+    <h3>个性化设置</h3>
+    <ul>
+      <li>头像：<img src="{{QINIU_IMG_URL}}{{user.profile.avatar_loc}}" class="am-img-thumbnail am-round"><a href="/accounts/editavatar/">更改</a></li>
+      <li>昵称: {{ user.profile.name }} </li>
+      <li>所在地: {{ user.profile.city }} </li>
+      <li>个性签名: {{ user.profile.intro }} </li>
+    </ul>
+
+    {% if user.is_authenticated %}
+    <a href="{% url 'pixare:profile_update' user.id %}">编辑资料</a>
+    <a href="{% url 'pixare:pwd_change' user.id %}">修改密码</a>
+    {% endif %}
+
+    <br>
+    <br>
+  </div>
+</div>
+
+{% endblock %}

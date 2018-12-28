@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>
+    {% block title %}Pixare - 分享精彩生活{% endblock %}
+  </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+  <link rel="icon" type="image/png" href="/static/images/favicon.png"/>
+  <link rel="stylesheet" href="/static/css/amazeui.min.css"/>
+  <link rel="stylesheet" href="/static/css/app.css"/>
+
+  {% block headerlink %}{% endblock %}
+
+  <style>
+    .footer p {
+      color: #7f8c8d;
+      margin: 0;
+      padding: 15px 0;
+      text-align: center;
+      background: #2d3e50;
+      margin-top: 10px;
+    }
+    .am-topbar-right img {
+      margin-top: 3px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header class="am-topbar am-topbar am-topbar-fixed-top">
+  <div class="am-container">
+    <h1 class="am-topbar-brand">
+      <a href="/">Pixare</a>
+      <!--<a href="/"><img src='/static/images/logo.png' width="100"/></a>-->
+    </h1>
+
+    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-secondary am-show-sm-only"
+            data-am-collapse="{target: '#collapse-head'}"><span class="am-sr-only">导航切换</span> <span
+        class="am-icon-bars"></span></button>
+
+    <div class="am-collapse am-topbar-collapse" id="collapse-head">
+      <ul class="am-nav am-nav-pills am-topbar-nav">
+        <li><a href="/explore"><span class="am-icon-rocket"></span> 探索</a></li>
+        <li><a href="/upload"><span class="am-icon-upload"></span> 发布</a></li>
+        <li><a href="/"><span class="am-icon-home"></span> 个人主页</a></li>
+      </ul>
+
+      {% if request.user.is_authenticated %}
+      <div class="am-topbar-right">
+          <a href="{% url 'pixare:logout' %}">
+            <button class="am-btn am-btn-danger am-topbar-btn am-btn-sm"><span class="am-icon-power-off"></span> 注销</button>
+          </a>
+      </div>
+      <div class="am-topbar-right">
+        <a href="{% url 'pixare:profile' user.id %}">
+          <img src="{{QINIU_IMG_URL}}{{user.profile.avatar_loc}}" class="am-img-thumbnail" width="45"><span class="am-btn">{{ user.username }}</span class="am-btn">
+        </a>
+      </div>
+
+      {% else %}
+      <div class="am-topbar-right">
+          <a href="{% url 'pixare:register' %}">
+            <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm"><span class="am-icon-pencil"></span> 注册</button>
+          </a>
+      </div>
+      <div class="am-topbar-right">
+          <a href="{% url 'pixare:login' %}">
+            <button class="am-btn am-btn-primary am-topbar-btn am-btn-sm"><span class="am-icon-user"></span> 登录</button>
+          </a>
+      </div>
+      {% endif %}
+
+      <form class="am-topbar-form am-topbar-right am-form-inline " role="search" action="/search">
+        <div class="am-form-group">
+          <input type="text" class="am-form-field am-input-sm" placeholder="搜索照片、用户、标签" name="q" accesskey="s">
+          <button type="submit" class="am-btn am-btn-default am-btn-sm"><span class="am-icon-search"></span></button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</header>
+
+
+<div class="content">
+<!--div style="height:1px;"></div-->
+{% block content %}{% endblock %}
+</div>
+
+<footer class="footer">
+  <p>© 2018 Proudly designed by the PixarePaddleWater Team.</p>
+</footer>
+
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/amazeui.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}修改个人资料{% endblock %}
+
+{% block content %}
+<head lang="en">
+  <meta charset="UTF-8">
+  <style>
+    .am-g h2{font-size: 200%; color: #333; margin-top: 30px; }
+  </style>
+</head>
+
+
+
+<div class="am-g">
+  <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+    <h2>账户信息</h2>
+    <ul>
+      <li>用户名: {{ user.username }} </li>
+      <li>Email: {{ user.email }} </li>
+    </ul>
+
+    <h3>修改个人资料</h3>
+    <hr>
+    <form method="post" class="am-form" action=""> {% csrf_token %}
+      {% for field in form %}
+      <div class="fieldWrapper">
+        {{ field.errors }}
+        {{ field.label_tag }}
+        {{ field }}
+        {% if field.help_text %}
+        <p class="help">{{ field.help_text|safe }}</p>
+        {% endif %}
+        <br>
+      </div>
+      {% endfor %}
+
+      <br />
+      <div class="am-cf">
+          <input type="submit" value="提交"class="am-btn am-btn-primary am-btn-block">
+      </div>
+
+    </form>
+    <br>
+    <a href="{% url 'pixare:profile' user.id %}">返回个人资料</a>
+    <a href="{% url 'pixare:pwd_change' user.id %}">修改密码</a>
+    <br>
+    <br>
+  </div>
+</div>
+
+
+
+
+{% endblock %}
+
+
+

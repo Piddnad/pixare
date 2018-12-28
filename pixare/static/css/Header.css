@@ -1,0 +1,64 @@
+.Header {
+    position: fixed;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 20px 0;
+    z-index: 100;  /* 始终位于最前 */
+    transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.HeaderScrolled {
+    background: rgba(0, 0, 0, 0.9);
+    padding: 5px 0;
+
+}
+
+.HeaderGroup {
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(5, auto); /* 等同于 auto auto auto auto auto */
+    align-items: center; /* 垂直居中 */
+    justify-items: center; /* 水平居中 */
+}
+
+.Header a {
+    color: white;
+    font-weight: 700;
+}
+
+.Header button {
+    padding: 8px 20px;
+    font-size: 20px;
+    background: rgb(221, 221, 221);
+    border: none;
+    font-weight: 700;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.Header button:hover {
+    background: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 640px){
+    .Header{
+        padding: 15px 0;
+    }
+
+    .HeaderGroup{
+        grid-auto-columns: repeat(4, auto);
+    }
+
+    .Header a:nth-child(4) {
+        display: none;
+    }
+}
+
+.Header form {
+    padding:10px;
+}

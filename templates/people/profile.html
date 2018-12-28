@@ -1,0 +1,18 @@
+{% extends "people/people_base.html" %}
+
+{% block people_content %}
+
+<div class="am-g">
+  <div class="am-u-sm-11 am-u-sm-centered">
+    <h2>个人资料</h2>
+    <ul>
+      <li>昵称: {{ people.profile.name }} </li>
+      <li>Email: {{ people.email }} </li>
+      <li>所在地: {{ people.profile.city }} </li>
+      <li>个性签名: {{ people.profile.intro }} </li>
+    </ul>
+    <hr/>
+  </div>
+</div>
+
+{% endblock %}

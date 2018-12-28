@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}修改照片信息{% endblock %}
+
+{% block content %}
+<head lang="en">
+  <meta charset="UTF-8">
+  <style>
+    .am-g h1{font-size: 200%; color: #333; margin-top: 30px; }
+    .am-g p{text-align: center; font-size: 14px;}
+  </style>
+</head>
+
+
+<body>
+  <div class="am-g">
+    <div class="am-u-md-8 am-u-sm-centered">
+
+      <h1>修改照片信息</h1>
+      <form name="edit_form" class="am-form" method="post" action="">{% csrf_token %}
+        <div class="am-u-md-4">
+          <div class="photo-edit">
+            <img src="{{QINIU_IMG_URL}}{{ photo.thumb_loc }}" alt="" />
+          </div>
+        </div>
+
+        <div class="am-u-md-8">
+          <div class="edit-margin">
+            <label>标题</label>
+            <input id="title" name="title" type="text" placeholder="给照片取个名字吧" class="basic-input edit-input" maxlength="60" value="{{photo.title}}">
+          </div>
+
+          <div class="edit-margin">
+            <label>描述</label>
+            <textarea name="caption" rows="4" class="basic-input edit-input" placeholder="描述一下照片背后的故事吧">{{photo.caption}}</textarea>
+          </div>
+
+          <div class="edit-margin">
+            <label>标签</label>
+            <input id="tags" name="tags" type="text" placeholder="给照片加个标签吧，用逗号隔开" class="basic-input edit-input" maxlength="60" value="{{photo.tagStr}}">
+          </div>
+          <br>
+          <input type="submit" name="update" value="更新" id="save" class="am-btn am-btn-default" style="font-weight:bold" title="更新照片信息">
+          <input type="submit" name="cancel" value="撤销" id="cancel" class="am-btn am-btn-default" style="font-weight:normal" title="撤销变更">
+          <hr>
+        </div>
+
+
+      </form>
+
+    </div>
+  </div>
+</body>
+
+{% endblock %}

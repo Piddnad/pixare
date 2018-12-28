@@ -1,0 +1,49 @@
+{% extends "people/people_base.html" %}
+
+
+
+{% block people_content %}
+
+<div class="am-g">
+  <div class="am-u-sm-11 am-u-sm-centered">
+    <div class="follow-list" style="clear:both;float:left;margin-top:30px;width:500px;">
+    {% if is_myFollow %}
+      {% for f in follow_list %}
+      <div class="comment-item">
+        <div class="fleft">
+        <a href="/people/{{f.be_followed_user.id}}/">
+        <img title="{{f.be_followed_user.profile.name}}" src="{{QINIU_IMG_URL}}{{f.be_followed_user.profile.avatar_square_loc}}">
+        </a>
+        </div>
+
+        <div class="comment-text-wrapper" style="width:450px;">
+          <div class="comment-head" style="width:432px;">
+          <span class="blue-link" style="margin-left:10px;"><a title="{{f.be_followed_user.profile.name}}" href="/people/{{f.be_followed_user.id}}/">{{f.be_followed_user.profile.name}}</a></span>
+          <span class="fright">于{{f.date_followed}}添加关注</span>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    {% else %}
+      {% for f in follow_list %}
+      <div class="comment-item">
+        <div class="fleft">
+        <a href="/people/{{f.follower.id}}/">
+        <img title="{{f.follower.profile.name}}" src="{{QINIU_IMG_URL}}{{f.follower.profile.avatar_square_loc}}">
+        </a>
+        </div>
+
+        <div class="comment-text-wrapper" style="width:450px;">
+          <div class="comment-head" style="width:432px;">
+          <span class="blue-link" style="margin-left:10px;"><a title="{{f.follower.profile.name}}" href="/people/{{f.follower.id}}/">{{f.follower.profile.name}}</a></span>
+          <span class="fright">于{{f.date_followed}}添加关注</span>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

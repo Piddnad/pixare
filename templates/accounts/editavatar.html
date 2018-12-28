@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}更改头像{% endblock %}
+
+{% block content %}
+<head lang="en">
+  <meta charset="UTF-8">
+  <style>
+    .am-g h3{font-size: 200%; color: #333; margin-top: 30px; }
+  </style>
+</head>
+
+
+<div class="am-g">
+  <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+
+    <h3>更改头像</h3>
+    <hr>
+    {% if message %}{{ message }}<br>{% endif %}
+    <form name="editform" method="post" action="" enctype="multipart/form-data" class="am-form">{% csrf_token %}
+
+      <div style="float:left;">
+      <img style="border:1px dashed #999;" src="{{QINIU_IMG_URL}}{{avatar_loc}}" alt="">
+      </div>
+
+      <div style="margin-left:30px;float:left;width:300px;">
+      <div style="margin-bottom:35px;">
+      <span style="width:300px;color:#060;">从电脑中选择你喜欢的图片</span>
+      </div>
+
+      <div style="margin-bottom:15px;">
+      <input type="file" name="pic_avatar" accept="image/*" />
+      </div>
+      <div style="margin-bottom:15px;">
+      <input type="submit" name="pic_submit" value="上传图片" id="pic-submit" title="上传图片">
+      </div>
+      </div>
+
+      <div style="clear:both;margin-top:50px;float:left;">
+      <input type="submit" name="save" value="保存" id="save" class="am-btn-default" style="font-weight:bold" title="保存头像">
+      <input type="submit" name="cancel" value="撤销" id="cancel" class="am-btn-default" style="font-weight:normal" title="撤销变更">
+      </div>
+    </form>
+
+    <br>
+  </div>
+</div>
+
+{% endblock %}
+

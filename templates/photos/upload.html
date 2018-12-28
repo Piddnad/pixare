@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}上传照片{% endblock %}
+
+{% block headerlink %}
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.MultiFile.pack.js"></script>
+{% endblock %}
+
+
+{% block content %}
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <style>
+    .am-g h1{font-size: 200%; color: #333; margin-top: 30px; }
+    .am-g p{text-align: center; font-size: 14px;}
+  </style>
+</head>
+
+<body>
+  <div class="am-g">
+    <div class="am-u-md-8 am-u-sm-centered">
+
+      <h1>第一步：上传照片</h1>
+
+      <div id="photos-upload">
+        <form class="am-form" action="" method="post" enctype="multipart/form-data" id="upload_form">
+          {% csrf_token %}
+          <div class="am-form-group">
+            <label for="doc-ipt-file-1">选择照片</label>
+            <input type="file" id="doc-ipt-file-1" name="img">
+            <br>
+            <input type="submit" value="上传" id="button" class="am-btn am-btn-default" title="上传这些照片">
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</body>
+
+
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block title %}Pixare - 分享精彩生活{% endblock %}
+
+{% block content %}
+    <style>
+    .hero {
+        background: url('../static/images/dino-reichmuth.jpg');
+        height: 920px;
+        background-size: cover;
+        background-position: center;
+        color: #fff;
+        text-align: center;
+        padding: 100px 0;
+    }
+
+    .heroGroup {
+      margin: 0 auto;
+      max-width: 500px;
+      padding: 150px 50px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      margin: 0;
+      color: white;
+      font-size: 40px;
+      line-height: 1.2;
+      opacity: 0;
+      animation: HeroAnimation;
+      animation-duration: 3s;
+      animation-delay: 0.2s;
+      animation-fill-mode: forwards;
+      animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .hero p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 25px;
+      line-height: 1.5;
+      animation: HeroAnimation 3s 0.1s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+      opacity: 0;
+    }
+
+
+    .hero a {
+      font-size: 17px;
+      font-weight: 600;
+      color: white;
+      text-transform: uppercase;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 9px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 20px;
+      transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .hero a:hover {
+      background: white;
+      color: black;
+    }
+
+    @keyframes HeroAnimation{
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0px);
+      }
+    }
+    </style>
+
+
+<div class="hero">
+  <div class="am-g">
+    <div class="am-u-lg-12">
+      <h1 class="get-title">Pixare - 一个自由的图片分享网站</h1>
+      <p>Feel free to share your colorful life!</p>
+      <p><a href="{% url 'pixare:register' %}" class="am-btn am-btn-sm get-btn">立刻加入</a></p>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

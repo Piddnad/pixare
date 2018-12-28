@@ -1,0 +1,24 @@
+
+
+<article class="am-comment" id="c_{{comment.id}}"> 				<!-- 评论容器 -->
+	<a href="/people/{{comment.author.id}}/">
+	  <img class="am-comment-avatar" alt="{{comment.author.profile.name}}" src="{{ QINIU_IMG_URL }}{{ people.profile.avatar_square_loc }}"/> 				<!-- 评论者头像 -->
+  </a>
+
+	<div class="am-comment-main"> 	<!-- 评论内容容器 -->
+	  <header class="am-comment-hd">
+		<!--<h3 class="am-comment-title">评论标题</h3>-->
+		<div class="am-comment-meta"> <!-- 评论元数据 -->
+		<a class="am-comment-author" href="/people/{{comment.author.id}}/">{{comment.author.profile.name}}</a>
+        评论于<time datatime="{{comment.date_posted}}"><span>{{comment.date_posted}}</span></time>
+		<div class="fright delete-link" id="delete-comment">
+        <a d-author-id="{{comment.author.id}}" d-comment-id="{{comment.id}}" title="删除这条评论?" href="javascript:void(0);">&gt;删除</a>
+    	</div>
+		</div>
+	  </header>
+
+	  <div class="am-comment-bd">
+        <span>{{comment.content}}</span>
+      </div> <!-- 评论内容 -->
+	</div>
+</article>

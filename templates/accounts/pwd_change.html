@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}修改密码{% endblock %}
+
+{% block content %}
+<head lang="en">
+  <meta charset="UTF-8">
+  <style>
+    .am-g h3{font-size: 200%; color: #333; margin-top: 30px; }
+  </style>
+</head>
+
+
+<div class="am-g">
+  <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+
+    <h3>修改密码</h3>
+    <hr>
+    {% if message %}{{ message }}<br>{% endif %}
+    <form method="post" class="am-form" action=""> {% csrf_token %}
+      {% for field in form %}
+      <div class="fieldWrapper">
+        {{ field.errors }}
+        {{ field.label_tag }}
+        {{ field }}
+        {% if field.help_text %}
+        <p class="help">{{ field.help_text|safe }}</p>
+        {% endif %}
+        <br>
+      </div>
+      {% endfor %}
+
+      <br />
+      <div class="am-cf">
+          <input type="submit" value="提交"class="am-btn am-btn-primary am-btn-block">
+      </div>
+
+    </form>
+    <br>
+    <a href="{% url 'pixare:profile' user.id %}">放弃修改并返回</a>
+    <br>
+    <br>
+  </div>
+</div>
+
+{% endblock %}
+
+
+

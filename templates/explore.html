@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Pixare - 分享精彩生活{% endblock %}
+
+{% block content %}
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <style>
+    .am-g h1{font-size: 200%; color: #333; margin-top: 10px; }
+  </style>
+</head>
+
+<div class="am-g">
+  <div class="am-u-lg-9 am-u-md-8 am-u-sm-centered">
+
+{#    <h1>探索</h1>#}
+
+    <div data-am-widget="tabs" class="am-tabs am-tabs-default">
+      {% if isHots %}
+      <ul class="am-nav am-nav-pills">
+        <li class="am-active"><a href="/explore/hots/">精彩照片</a></li>
+        <li><a href="/explore/recents/">最新照片</a></li>
+      </ul>
+      {% endif %}
+      {% if isRecents %}
+      <ul class="am-nav am-nav-pills">
+        <li><a href="/explore/hots/">精彩照片</a></li>
+        <li class="am-active"><a href="/explore/recents/">最新照片</a></li>
+      </ul>
+      {% endif %}
+
+      <ul data-am-widget="gallery" class="am-gallery am-avg-sm-2 am-avg-md-3 am-avg-lg-4 am-gallery-bordered" data-am-gallery="{ pureview: false }" >
+        {% for p_item in p_items %}
+        {% for photo in p_item %}
+        <li>
+          <div class="am-gallery-item">
+            <a href="/photos/{{photo.owner.id}}/{{photo.id}}/">
+              <img src="{{QINIU_IMG_URL}}{{photo.thumb_loc}}"  alt="{{ photo.caption }}"/>
+              <h3 class="am-gallery-title">{{ photo.title }}</h3>
+            </a>
+            {% for tag in photo.tag_list %}
+            <span><a class="am-badge" href="/search/?q={{tag.name}}">{{tag.name}}</a></span>
+            {% endfor %}
+            <div class="am-gallery-desc">来自<a href="/people/{{photo.owner.id}}/" title="">{{photo.owner.profile.name}}</a></div>
+            <span class="am-gallery-desc">上传于{{photo.date_posted|date:"Y-m-j"}}</span>
+            <span class="am-gallery-desc"> 喜欢{{photo.like_count}} 评论{{ photo.comment_count }}</span>
+          </div>
+        </li>
+        {% endfor %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
