@@ -34,4 +34,10 @@
 * Pillow 5.3.0
 * qiniu 7.2.2（使用七牛图床存储上传图片）
 
+### 预览截图
+待添加
+
+### 参考项目&致谢
+https://github.com/restran/green-glow
+
 

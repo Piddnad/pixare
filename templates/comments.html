@@ -12,15 +12,14 @@
     <div class="comment-item" id="c_{{comment.id}}">
       <div class="fleft">
       <a href="/people/{{comment.author.id}}/">
-      <img class="am-img-thumbnail " title="{{comment.author.profile.name}}" src="{{QINIU_IMG_URL}}{{comment.author.profile.avatar_square_loc}}">
+      <img title="{{comment.author.profile.name}}" src="{{QINIU_IMG_URL}}{{comment.author.profile.avatar_square_loc}}">
       </a>
-      <span class="blue-link" style="margin-left:10px;"><a title="{{comment.author.profile.name}}" href="/people/{{comment.author.id}}/">{{comment.author.profile.name}}</a></span>
       </div>
 
       <div class="comment-text-wrapper">
         <div class="comment-head">
-        <span class="am-article-meta">{{comment.date_posted}}</span>
-
+        <span>{{comment.date_posted}}</span>
+        <span class="blue-link" style="margin-left:10px;"><a title="{{comment.author.profile.name}}" href="/people/{{comment.author.id}}/">{{comment.author.profile.name}}</a></span>
         {% if comment.deleted_by_photo_owner %}
         <span style="margin-left:10px;">照片拥有者删除了这条评论</span>
           {% endif %}
@@ -28,7 +27,7 @@
           <span style="margin-left:10px;">这张照片已被删除</span>
           {% endif %}
         <span class="fright delete-link" id="delete-comment">
-            <a class="am-article-meta" d-author-id="{{comment.author.id}}" d-comment-id="{{comment.id}}" d-photo-owner-id="{{comment.photo_owner.id}}" title="删除这条评论?" href="javascript:void(0);">&gt;删除</a>
+            <a d-author-id="{{comment.author.id}}" d-comment-id="{{comment.id}}" d-photo-owner-id="{{comment.photo_owner.id}}" title="删除这条评论?" href="javascript:void(0);">&gt;删除</a>
           </span>
         </div>
         <div class="comment-text" style="width:400px;">
