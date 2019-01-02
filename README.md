@@ -43,10 +43,9 @@
 
 个人主页
 ![](screenshots/people_home.png)
-![](screenshots/people_comments.png)
 
 评论页
-![](screenshots/comments.png)
+![](screenshots/detail.png)
 
 搜索结果页
 ![](screenshots/search.png)
