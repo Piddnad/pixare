@@ -35,7 +35,21 @@
 * qiniu 7.2.2（使用七牛图床存储上传图片）
 
 ### 预览截图
-待添加
+欢迎页
+![](screenshots/welcome.png)
+
+探索页
+![](screenshots/explore.png)
+
+个人主页
+![](screenshots/people_home.png)
+![](screenshots/people_comments.png)
+
+评论页
+![](screenshots/comments.png)
+
+搜索结果页
+![](screenshots/search.png)
 
 ### 参考项目&致谢
 https://github.com/restran/green-glow
