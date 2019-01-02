@@ -125,11 +125,11 @@ STATIC_URL = '/static/'
 
 
 # 七牛对象存储密钥
-QINIU_ACCESS_KEY = "S-8M3vBZl02QCEgugyzoTNr3X27G-Do4nrC2l1uF"
-QINIU_SECRET_KEY = "OM_AC8gMC96CoBJfn2SN0x9f57dJeAYD4_3inOg3"
+QINIU_ACCESS_KEY = ""
+QINIU_SECRET_KEY = ""
 
 # 存在七牛上的图片的文件名前缀
 QINIU_FILE_PREFIX = 'pixare'
 
 # 七牛图片存储的 URL
-QINIU_IMG_URL = 'http://pkc3zk10q.bkt.clouddn.com/'
+QINIU_IMG_URL = ''

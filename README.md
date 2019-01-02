@@ -32,23 +32,52 @@
 * Python 3.6
 * Django 2.1.2
 * Pillow 5.3.0
-* qiniu 7.2.2（使用七牛图床存储上传图片）
+* qiniu 7.2.2（使用七牛存储上传图片）
 
 ### 预览截图
-欢迎页
+* 欢迎页
+
 ![](screenshots/welcome.png)
 
-探索页
+* 探索页
+
 ![](screenshots/explore.png)
 
-个人主页
+* 个人主页
+
 ![](screenshots/people_home.png)
 
-评论页
+* 评论页
+
 ![](screenshots/detail.png)
 
-搜索结果页
+* 搜索结果页
+
 ![](screenshots/search.png)
+
+### 配置指南
+* 首先参考前文的**开发环境**安装相关依赖
+* 在 Mysite/settings.py 中配置七牛账号，需要配置的字段如下：
+
+```
+    # 七牛对象存储密钥
+    QINIU_ACCESS_KEY = ""
+    QINIU_SECRET_KEY = ""
+
+    # 存在七牛上的图片的文件名前缀
+    QINIU_FILE_PREFIX = 'pixare'
+
+    # 七牛图片存储的 URL
+    QINIU_IMG_URL = ''
+```
+
+* 之后执行数据库迁移操作
+
+```
+    python manage.py migrate
+```
+
+* 运行服务器
 
 ### 参考项目&致谢
 https://github.com/restran/green-glow
